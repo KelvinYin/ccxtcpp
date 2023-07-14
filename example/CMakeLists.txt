@@ -9,3 +9,6 @@ target_link_libraries(example_ext binacpp_dynamic)
 
 add_executable(example_fut example_fut.cpp)
 target_link_libraries(example_fut binacpp_dynamic)
+
+add_executable(example_ws example_ws.cpp)
+target_link_libraries(example_ws binacpp_dynamic)
