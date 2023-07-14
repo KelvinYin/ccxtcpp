@@ -1,21 +1,4 @@
-
-
-
-
-This is the source of libBinaCPP which is CPP Library for Binance API, running make in this folder will compile libbinacpp.so from source.
-
-The libbinacpp.so compiled will be generated in ../lib/libbinacpp/lib and the headers in ../lib/libbinacpp/include 
-
-You only need to recompile the src here if you need to modify the source of libBinaCPP.
-
-
-
-
-
-To use the library in your C++ project,  just do -I<path to libBinaCPP include> and -L<path to libBinaCPP lib> and a -lbinacpp for linker.
-
-You can view the examples in ../example folder for references on how to use libBinaCPP.
-
+WebSocket client 有两种实现，binacpp_websocket.h/cpp 是直接用 libwebsockets API 实现的 C 风格客户端。websocket_client 子目录是 C++ 风格的实现，两者没有直接关系，但都实现了客户端功能。两者的用法可参考示例代码。
 
 
 
