@@ -6,16 +6,16 @@ file(GLOB LIB_INC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.h
 file(GLOB SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/websocket_client/*.cpp)
 
 # 生成静态库
-add_library(binacpp_static STATIC ${INC_FILES} ${SRC_FILES})
+add_library(ccxtcpp_static STATIC ${INC_FILES} ${SRC_FILES})
 
 # 生成动态库
-add_library(binacpp_dynamic SHARED ${INC_FILES} ${SRC_FILES})
+add_library(ccxtcpp_dynamic SHARED ${INC_FILES} ${SRC_FILES})
 
 set (LIBS curl jsoncpp websockets cpr)
 
 # 链接 库
-target_link_libraries(binacpp_static ${LIBS})
-target_link_libraries(binacpp_dynamic ${LIBS})
+target_link_libraries(ccxtcpp_static ${LIBS})
+target_link_libraries(ccxtcpp_dynamic ${LIBS})
 
 # 拷贝头文件
 file(COPY ${LIB_INC_FILES} DESTINATION ${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
