@@ -60,7 +60,7 @@ void BinaFuturesCPP::get_exchangeInfo(Json::Value &json_result)
 	url += "/fapi/v1/exchangeInfo";
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -105,7 +105,7 @@ void BinaFuturesCPP::get_depth(const char *symbol, int limit, Json::Value &json_
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_depth> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -150,7 +150,7 @@ void BinaFuturesCPP::get_trades(const char *symbol, int limit, Json::Value &json
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_trades> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -221,7 +221,7 @@ void BinaFuturesCPP::get_aggTrades(
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_aggTrades> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -290,7 +290,7 @@ void BinaFuturesCPP::get_klines(
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_klines> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -330,7 +330,7 @@ void BinaFuturesCPP::get_24hr(const char *symbol, Json::Value &json_result)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_24hr> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -375,7 +375,7 @@ void BinaFuturesCPP::get_price(const char *symbol, Json::Value &json_result)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_price> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -420,7 +420,7 @@ void BinaFuturesCPP::get_bookTicker(const char *symbol, Json::Value &json_result
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_BookTicker> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -478,7 +478,7 @@ void BinaFuturesCPP::get_balance(long recvWindow, Json::Value &json_result)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_balance> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -537,7 +537,7 @@ void BinaFuturesCPP::get_account(long recvWindow, Json::Value &json_result)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_account> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -613,7 +613,7 @@ void BinaFuturesCPP::send_order(
 	BinaCPP_logger::write_log("<BinaFuturesCPP::send_order> url = |%s|, post_data = |%s|", url.c_str(), post_data.c_str());
 
 	cpr::Response r = cpr::Post(cpr::Url{url}, cpr::Body{post_data}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -696,7 +696,7 @@ void BinaFuturesCPP::cancel_order(const char *symbol, long orderId, const char *
 	BinaCPP_logger::write_log("<BinaFuturesCPP::cancel_order> url = |%s|, post_data = |%s|", url.c_str(), post_data.c_str());
 
 	cpr::Response r = cpr::Delete(cpr::Url{url}, cpr::Body{post_data}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -753,7 +753,7 @@ void BinaFuturesCPP::cancel_allOrder(const char *symbol, long recvWindow, Json::
 	BinaCPP_logger::write_log("<BinaFuturesCPP::cancel_allOrder> url = |%s|, post_data = |%s|", url.c_str(), post_data.c_str());
 
 	cpr::Response r = cpr::Delete(cpr::Url{url}, cpr::Body{post_data}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -835,7 +835,7 @@ void BinaFuturesCPP::get_myTrades(
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_myTrades> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -900,7 +900,7 @@ void BinaFuturesCPP::get_openOrders(const char *symbol, long recvWindow, Json::V
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_openOrders> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -965,7 +965,7 @@ void BinaFuturesCPP::get_openOrder(const char *symbol, long orderId, const char 
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_openOrder> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -1048,7 +1048,7 @@ void BinaFuturesCPP::get_allOrders(const char *symbol, long orderId, long startT
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_allOrders> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -1128,7 +1128,7 @@ void BinaFuturesCPP::get_order(const char *symbol, long orderId, const char *ori
 	BinaCPP_logger::write_log("<BinaFuturesCPP::get_order> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Get(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -1169,7 +1169,7 @@ void BinaFuturesCPP::start_userDataStream(Json::Value &json_result)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::start_userDataStream> url = |%s|", url.c_str());
 
 	cpr::Response r = cpr::Post(cpr::Url{url}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		try
 		{
@@ -1210,7 +1210,7 @@ void BinaFuturesCPP::keep_userDataStream(const char *listenKey)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::keep_userDataStream> url = |%s|, post_data = |%s|", url.c_str(), post_data.c_str());
 
 	cpr::Response r = cpr::Put(cpr::Url{url}, cpr::Body{post_data}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		BinaCPP_logger::write_log("<BinaFuturesCPP::keep_userDataStream> Done.");
 	}
@@ -1241,7 +1241,7 @@ void BinaFuturesCPP::close_userDataStream(const char *listenKey)
 	BinaCPP_logger::write_log("<BinaFuturesCPP::close_userDataStream> url = |%s|, post_data = |%s|", url.c_str(), post_data.c_str());
 
 	cpr::Response r = cpr::Delete(cpr::Url{url}, cpr::Body{post_data}, cpr::Header{{"X-MBX-APIKEY", api_key}});
-	if (r.text.size() > 0)
+	if (!r.text.empty())
 	{
 		BinaCPP_logger::write_log("<BinaFuturesCPP::close_userDataStream> Done.");
 	}
